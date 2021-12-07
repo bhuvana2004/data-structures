@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct slist{
+    int ele;
+    struct slist *next;
+};
+int main(){
+typedef struct slist node;
+node *create(node*first){
+    node *new,*prev;
+    int x;
+    printf("enter x value:");
+    scanf("%d",&x);
+    while(x!=-1){
+        new=(node*)malloc(sizeof(node));
+        new->ele=x;
+        new->next=NULL;
+        if(first==NULL){
+            first=new;
+            prev=new;
+        }
+        else{
+            prev->next=new;
+            prev=new;
+            printf("enter x(enter -1 to stop)");
+            scanf("%d",&x);
+        }
+        return first;
+        }
+    void display(node *first)
+    {
+        node *temp=first;
+        if(first==NULL)
+        {
+            printf("No list to print");
+        }
+        while(temp!=NULL)
+        {
+            printf("|%d|",temp->ele);
+            temp=temp->next;
+        }
+        printf("NULL");
+    }
+}
+}
+        
