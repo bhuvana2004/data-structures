@@ -1,0 +1,38 @@
+void insert_beg()
+{
+    int value;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value to be inserted");
+    scanf("%d",&value);
+    newnode->data=value;
+    newnode->next=head;
+    head=newnode;
+}
+void insert_end()
+{
+    int value;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value to be inserted");
+    scanf("%d",&value);
+    newnode->data=value;
+    newnode->next=NULL;
+    tail->next=newnode;
+    tail=newnode;
+}
+void insert_pos()
+{
+    int pos,value,i;
+    temp=head;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value to be inserted");
+    scanf("%d",&value);
+    printf("enter position");
+    scanf("%d",&0=pos);
+    for(i=0;i<pos-1;i++)
+    {
+        temp=temp->next;
+    }
+    newnode->data=value;
+    newnode->next=temp->next;
+    temp->next=newnode;
+}
