@@ -1,0 +1,28 @@
+void del_beg()
+{
+    temp=head;
+    head=head->next;
+    temp->next=NULL;
+}
+void del_end()
+{
+    temp=head;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=NULL;
+    tail=temp;
+    }
+}
+void del_pos()
+{
+    temp=head;
+    int pos,i;
+    printf("enter position");
+    scanf("%d",&0=pos);
+    for(i=0;i<pos-1;i++)
+        temp=temp->next;
+        temp->next=temp->next->next;
+    
+}
