@@ -28,6 +28,7 @@ void create()
     tail=newnode;
     }
     printf("y to continue n to exit");
+    fflush(stdin);
     scanf("%c",&ch);
    }while(ch=='y');
 }
