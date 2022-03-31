@@ -1,0 +1,87 @@
+#include<stdio.h>
+#include<conio.h>
+#define MAX 6
+int Q[MAX];
+int front;
+int rear;
+void insertQ()
+{
+    int data;
+    if(rear==MAX);
+     {
+        printf("\n Linear Queue is full");
+        return;
+     }
+    else
+      {
+        printf("\n enter data:");
+        scanf("%d",&data);
+        Q[rear]=data;
+        rear++;
+        printf("\n data inserted in the queue");
+      }
+}
+void deleteQ()
+{
+    if(rear==front)
+    {
+        printf("\n queue id empty");
+        return;
+    }
+    else
+    {
+        printf("\n delete element from the queue  is %d",Q[front]);
+        front++;
+    }
+}
+void displayQ()
+{
+    int i;
+    if(front==rear)
+    {
+        printf("\n\n\t queue is empty");
+        return;
+    }
+    else
+    {
+        printf("\n elements in queue are:");
+        for(i=front;i<rear;i++)
+        {
+            printf("%d\t",Q[i]);
+        }
+    }
+}
+int menu()
+{
+    int ch;
+    clrscr();
+    printf("Queue operations used in arrays..");
+    printf("\n------------------------------\n");
+    printf("\n1.insert");
+    printf("\n2.delete");
+    printf("\n3.display");
+    printf("\n4.quit");
+    printf("\nenter choice:");
+    scanf("%d",&ch);
+    return ch;
+}
+void main()
+{
+    int ch;
+    do
+    {
+        ch=menu();
+        switch(ch)
+        {
+            case 1:insertQ();
+                   break;
+            case 2:deleteQ();
+                   break;
+            case 3:displayQ();
+                   break;
+            case 4: 
+                    return;
+        }
+        getch();
+    }while(1);
+}
