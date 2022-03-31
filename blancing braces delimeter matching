@@ -1,10 +1,11 @@
 #include<stdio.h>
 char st[50];
 int top=-1;
-void push(char t){
+void push(char t)
+{
     st[++top]=t;
 }
-char pop()
+int pop()
 {
     return st[top--];
 }
@@ -18,31 +19,33 @@ void main()
     while(ch[i]!='\0')
     {
         if(ch[i]=='('||ch[i]=='['||ch[i]=='{')
-            push(ch[i]);
+        push(ch[i]);
         else if(ch[i]==')'||ch[i]==']'||ch[i]=='}')
         {
             if(top==-1)
             {
-            flag=0;
-            break;
-                
+                flag=0;
+                break;
             }
+        else
+        {
+            char x=pop();
+            if(x=='('&&ch[i]==')'||x=='['&&ch[i]==']'||x=='{'&&ch[i]=='}')
+            flag=1;
             else
             {
-                char x=pop();
-               if(x=='('&&ch[i]==')'||x=='['&&ch[i]==']'||x=='{'&&ch[i]=='}')
-               flag=1;
-               else{
-                   flag=0;
-                   break;
-               }
+                flag=0;
+                break;
             }
-        }i++;
+                
+        }
+        }
+        i++;
     }
     if(top!=-1)
     flag=0;
     if(flag==1)
     printf("valid");
     else
-    printf("Invalid");
+    printf("invalid");
 }
