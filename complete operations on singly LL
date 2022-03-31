@@ -1,0 +1,216 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node*next;
+}*newnode,*temp,*t1,*t2;
+struct node*head;
+struct node*tail;
+void create()
+{
+    int value;
+    char ch;
+    do{
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter data value");
+    scanf("%d",&value);
+    newnode->data=value;
+    newnode->next=NULL;
+    if(head==NULL)
+    {
+        head=newnode;
+        tail=newnode;
+    }
+    else
+    {
+    tail->next=newnode;
+    tail=newnode;
+    }
+    printf("y to continue n to exit");
+    scanf("%c",&ch);
+   }while(ch=='y');
+}
+void display()
+{
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d\n",temp->data);
+        temp=temp->next;
+        
+    }
+}
+void insert_beg()
+{
+    int value;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value to be inserted");
+    scanf("%d",&value);
+    newnode->data=value;
+    newnode->next=head;
+    head=newnode;
+}
+void insert_end()
+{
+    int value;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value to be inserted");
+    scanf("%d",&value);
+    newnode->data=value;
+    newnode->next=NULL;
+    tail->next=newnode;
+    tail=newnode;
+}
+void insert_pos()
+{
+    int pos,value,i;
+    temp=head;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value to be inserted");
+    scanf("%d",&value);
+    printf("enter position");
+    scanf("%d",&pos);
+    for(i=0;i<pos-1;i++)
+    {
+        temp=temp->next;
+    }
+    newnode->data=value;
+    newnode->next=temp->next;
+    temp->next=newnode;
+}
+void del_beg()
+{
+    temp=head;
+    head=head->next;
+    temp->next=NULL;
+}
+void del_end()
+{
+    temp=head;
+    while(temp->next!=tail)
+    {
+        temp=temp->next;
+    }
+    temp->next=NULL;
+    tail=temp;
+    }
+void del_pos()
+{
+    temp=head;
+    int pos,i;
+    printf("enter position");
+    scanf("%d",&pos);
+    for(i=0;i<pos-1;i++)
+        temp=temp->next;
+        temp->next=temp->next->next;
+    
+}
+int num_nodes()
+{
+    int count=0;
+    temp=head;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    printf("%d",count);
+}
+void reverse_list()
+{
+    struct node *next,*current,*previous=NULL;
+    current=head;
+    while(current!=NULL)
+    {
+        next=current->next;
+        current->next=previous;
+        previous=current;
+        current=next;
+    }
+    head=previous;
+}
+void sort()
+{
+    int  t;
+    for(t1=head;t1->next!=NULL;t1=t1->next)
+    {
+     for(t2=t1->next;t2!=NULL;t2=t2->next)
+     {
+        if(t1->data>t2->data)
+        {
+            t=t1->data;
+            t1->data=t2->data;
+            t2->data=t;
+        }
+     }
+    }
+            
+}
+void search()
+{
+    int flag=0,key;
+    printf("enter key to search");
+    scanf("%d",&key);
+    temp=head;
+    while(temp!=NULL)
+    {
+        if(key==temp->data)
+        {
+            flag=1;
+            break;
+        }
+    }
+    if(flag==1)
+    {
+        printf("element is found");
+    }
+    else
+    {
+        printf("element not found");
+    }
+}
+int main()
+{
+    int n,value,pos;
+    int choice;
+    create();
+    while(1)
+    {
+        printf("enter 1 to display the list\n,2 to insert at beg\n,3 at insert end\n,4 at insert at pos\n,5 del at beg\n,6 del at end\n,7 at del at pos\n,8 to count \n,9 to reverse\n,10.sort\n,11.search\n,12 exit\n");
+            printf("enter choice");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1:display();
+               break;
+        case 2:insert_beg();
+               break;
+        case 3:insert_end();
+               break;
+        case 4:insert_pos();
+               break;
+        case 5:del_beg();
+               break;
+        case 6:del_end();
+               break;
+        case 7:del_pos();
+               break;
+        case 8:num_nodes();
+               break;
+        case 9:reverse_list();
+               break;
+        case 10:sort();
+                display();
+                break;
+        case 11:search();
+                break;
+        case 12:exit(1);
+                break;
+        default:printf("wrong choice");
+                break;
+    }
+    }
+    return 0;
+}
+
