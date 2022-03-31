@@ -14,7 +14,7 @@ int isEmpty()
 void insertQ()
 {
     int data;
-       if(isFull());
+       if(isFull())
          {
            printf("\n Linear Queue is full");
              
