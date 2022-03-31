@@ -1,60 +1,58 @@
 #include<stdio.h>
 #include<conio.h>
-#define MAX 6
-int Q[MAX];
-int front;
-int rear;
+int Q[6],f=-1,r=-1;
+int isFull()
+{
+    if(r==5) return 1;
+    else return 0;
+}
+int isEmpty()
+{
+    if(f==-1||f>r) return 1;
+    else return 0;
+}
 void insertQ()
 {
     int data;
-    if(rear==MAX);
-     {
-        printf("\n Linear Queue is full");
-        return;
-     }
-    else
-      {
+       if(isFull());
+         {
+           printf("\n Linear Queue is full");
+             
+         }
         printf("\n enter data:");
         scanf("%d",&data);
-        Q[rear]=data;
-        rear++;
+        r++;
+        if(f==-1) f++;
+        Q[r]=data;
         printf("\n data inserted in the queue");
-      }
+    
 }
-void deleteQ()
+int deleteQ()
 {
-    if(rear==front)
+    int t;
+    if(isEmpty())
     {
         printf("\n queue id empty");
-        return;
     }
-    else
-    {
-        printf("\n delete element from the queue  is %d",Q[front]);
-        front++;
-    }
+     printf("\n delete element from the queue  is" );
+     t=Q[f];
+     f++;
+     return t;
+    
 }
 void displayQ()
 {
     int i;
-    if(front==rear)
-    {
-        printf("\n\n\t queue is empty");
-        return;
-    }
-    else
-    {
-        printf("\n elements in queue are:");
-        for(i=front;i<rear;i++)
+    
+        for(i=f;i<=r;i++)
         {
             printf("%d\t",Q[i]);
         }
-    }
+    
 }
 int menu()
 {
     int ch;
-    clrscr();
     printf("Queue operations used in arrays..");
     printf("\n------------------------------\n");
     printf("\n1.insert");
@@ -85,3 +83,4 @@ void main()
         getch();
     }while(1);
 }
+
