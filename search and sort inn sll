@@ -1,0 +1,39 @@
+void sort()
+{
+    int  t;
+    for(t1=head;t1!=NULL;t1=t1->next)
+    {
+     for(t2=head;t2!=NULL;t2=t2->next)
+     {
+        if(t2->data>t2->next->data)
+        {
+            t=t2->data;
+            t2->data=t2->next->data;
+            t2->next->data=t;
+        }
+     }
+    }
+}
+void search()
+{
+    int flag=0,key;
+    printf("enter key to search")
+    scanf("%d",&key);
+    temp=head;
+    while(temp!=NULL)
+    {
+        if(key==temp->data)
+        {
+            flag=1;
+            break;
+        }
+    }
+    if(flag==1)
+    {
+        printf("element is found");
+    }
+    else
+    {
+        printf("element not found");
+    }
+}
