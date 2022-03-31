@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<stdlib.h>
+int stack[6],top=-1;
+void push()
+{
+    int data;
+    if(top==5)
+    {
+        printf("stack overflow");
+    }
+    else
+    {
+        printf("enter data");
+        scanf("%d",&data);
+        top++;
+        stack[top]=data;
+    }
+}
+int pop()
+{
+    int ele;
+    if(top==-1)
+    {
+        printf("stack underflow");
+    }
+    else
+    {
+       return stack[top--];
+    }
+}
+int peek()
+{
+    printf("%d\t",stack[top]);
+}
+void display()
+{
+    int i;
+    if(top!=-1)
+    {
+        for(i=top;i>=0;i--)
+        printf("%d\n",stack[i]);
+    }
+    else
+    {
+        printf("empty stack");
+    }
+}
+int main()
+{
+    int stack[6],top=-1,ch;
+    while(1)
+    {
+        printf("1.push\n2.pop\n3.peek\n4.display\n5.exit\n");
+        printf("enter choice");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:push();
+                   break;
+            case 2:pop();
+                   break;
+            case 3:peek();
+                   break;
+            case 4:display();
+                   break;
+            case 5:exit(0);
+                   break;
+        }
+    }
+}
